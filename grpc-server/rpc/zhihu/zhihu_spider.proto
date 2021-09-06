@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package zhihu;
+
+message ZhiHuSpiderReq {
+
+}
+
+message ZhiHuSpiderResp {
+  repeated ZhiHuSpiderItem data = 1;
+}
+
+message ZhiHuSpiderItem {
+  string title = 1;
+  string url = 2;
+  uint64 created = 3;
+  uint32 answer_count = 4;
+  uint32 follower_count = 5;
+  uint32 comment_count = 6;
+  string brief = 7;
+  string thumbnail=8;
+  string detail = 9;
+}
+
+service ZhiHuSpider{
+  rpc FetchHot(ZhiHuSpiderReq) returns (ZhiHuSpiderResp) {}
+}
+
+
+
+
+
+
+

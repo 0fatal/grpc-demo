@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package pp;
+
+option go_package="./";
+
+
+message PPSpiderResp {
+  repeated PPSpiderBody data = 1;
+}
+
+message PPSpiderBody {
+  string title = 1;
+  string link = 2;
+  string time = 3;
+  string date = 4;
+}
+
+message PPSpiderReq {
+  SectionType section_type = 1;
+  uint32 page = 2;
+  NewsType news_type= 3;
+}
+
+enum SectionType {
+  _ = 0;
+  ST_TEACH = 36;
+  ST_NEWS = 239;
+  ST_EQUIPMENT = 227;
+  ST_GAME_VIDEO = 2;
+  ST_ASK = 329;
+}
+
+enum NewsType {
+  NT_ALL = 0;
+  NT_GAME=229;
+  NT_PLAYER=231;
+  NT_EQUIPMENT=232;
+  NT_FUN=230;
+}
+
+service PPSpider {
+  rpc FetchPPW(PPSpiderReq) returns (PPSpiderResp) {}
+}

@@ -1,0 +1,32 @@
+version: '3'
+services:
+  grpc-client:
+    build:
+      context: ./grpc-client
+      dockerfile: ./Dockerfile
+    container_name: 'grpc-client'
+    expose:
+      - 8899
+    ports:
+      - '8899:8899'
+    external_links:
+      - grpc-net
+    networks:
+      - default
+      - grpc-net
+    depends_on:
+      - grpc-server
+  grpc-server:
+    # image: grpc-server
+    build:
+      context: ./grpc-server
+      dockerfile: ./Dockerfile
+    container_name: 'grpc-server'
+    external_links:
+      - grpc-net
+    networks:
+      - default
+      - grpc-net
+networks:
+  grpc-net:
+    external: true
