@@ -9,6 +9,8 @@
 > docker build -t grpc-server .
 > 
 > docker run -it --name grpc-test grpc-server
+> 
+> docker rmi $(docker images  | grep "<none>" | awk '{print $3}')
 - 常用docker命令
 > ubuntu16自带python3.5, 18自带py3.6.9
 ---
