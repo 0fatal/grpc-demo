@@ -5,6 +5,7 @@ services:
       context: ./grpc-client
       dockerfile: ./Dockerfile
     container_name: 'grpc-client'
+    image: zacharywin/grpc-client
     expose:
       - 8899
     ports:
@@ -22,6 +23,7 @@ services:
       context: ./grpc-server
       dockerfile: ./Dockerfile
     container_name: 'grpc-server'
+    image: zacharywin/grpc-server
     external_links:
       - grpc-net
     networks:
